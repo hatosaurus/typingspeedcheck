@@ -31,6 +31,7 @@ def get_time():
 
 def calculate_seconds(start, end, length_of_test):
     seconds = end - start
+    print(f"Total time taken: {seconds} seconds.")
     seconds_per_word = length_of_test / seconds
     word_per_minute = int(60/seconds_per_word)
     return word_per_minute
@@ -48,10 +49,14 @@ def check_accuracy(userlist, wordlist, length_of_test):
     check_list = wordlist.split()
     for word in check_list:
         index = check_list.index(word)
-        if userlist[index] == word:
-            print(f"{word} is correct.")
-            score += 1
-        else:
-            print(f"{word} is not correct, user typed {userlist[index]}")
+        try:
+            if userlist[index] == word:
+                print(f"{word} is correct.")
+                score += 1
+            else:
+                print(f"{word} is not correct, user typed {userlist[index]}")
+        except IndexError:
+            print("Word missing, skipped.")
+            continue
     final_score = int(score / length_of_test * 100)
     return final_score

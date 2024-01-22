@@ -10,10 +10,10 @@ class Main(ttk.Frame):
         self.master = master
         self.grid(sticky="nsew")
         self.master.title("Typing Speed Calculator")
-        self.master.geometry("1200x700")
-        self.grid_rowconfigure((0, 1, 2, 3), weight=1)
+        self.master.geometry("1200x700+250+250")
+        self.grid_rowconfigure((0, 2, 3), weight=1)
         self.grid_columnconfigure((0, 1, 2, 3), weight=1)
-        self.master.grid_rowconfigure((0, 1, 2, 3), weight=1)
+        self.master.grid_rowconfigure((0, 2, 3), weight=1)
         self.master.grid_columnconfigure((0, 1, 2, 3), weight=1)
 
     def create_widgets(self, word_list, retry_callback):
@@ -35,7 +35,7 @@ class Main(ttk.Frame):
         self.info.grid(column=2, row=2, columnspan=1, sticky="ew")
 
         self.retry_button = ttk.Button(text="Retry", command=lambda: retry_callback())
-        self.retry_button.grid(column=1, row=3, columnspan=2, sticky="ew")
+        self.retry_button.grid(column=1, row=3, columnspan=2, sticky="")
 
     def show_results(self, score, wpm):
         self.info.config(text=f"Accuracy: {score}%\nWords per minute: {wpm}.", font=("Arial", 18, "bold"), justify="center", foreground="green")

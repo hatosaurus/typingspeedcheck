@@ -47,7 +47,8 @@ if __name__ == "__main__":
     start_time = start()
     root.bind("<Return>", finish)
     root.bind("<Escape>", esc)
-    main.typing.focus()
+    # main.typing.focus()
+    # root.overrideredirect(True)
     root.mainloop()
 
 

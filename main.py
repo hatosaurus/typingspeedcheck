@@ -38,7 +38,7 @@ def finish(self):
 def calculate_score(start, end, length):
     user_entry = str(main.retrieve_input())
     check_list = create_list(user_entry)
-    words_per_minute = calculate_seconds(start, end, length)
+    words_per_minute = calculate_wpm(start, end, user_entry)
     final_score = check_accuracy(check_list, word_list, length)
     main.show_results(final_score, words_per_minute)
 

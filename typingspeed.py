@@ -22,13 +22,16 @@ def user_typing(words):
     return typing
 
 
-def calculate_seconds(start, end, length_of_test):
+def calculate_wpm(start, end, characters):
+    num_characters = len(characters)
     seconds = end - start
     print(f"Total time taken: {seconds} seconds.")
-    seconds_per_word = length_of_test / seconds
-    print(f"Seconds per word: {seconds_per_word}")
-    word_per_minute = int(60/seconds_per_word)
-    return word_per_minute
+    minutes = (seconds/60)
+    print(f"{minutes} minute(s)")
+    all_entries = (num_characters/5)
+    gross_wpm = (all_entries/minutes)
+    wpm = round(gross_wpm)
+    return wpm
 
 
 def create_list(string):
@@ -52,5 +55,5 @@ def check_accuracy(userlist, wordlist, length_of_test):
         except IndexError:
             print("Word missing, skipped.")
             continue
-    final_score = int(score / length_of_test * 100)
-    return final_score
+    accuracy_score = round(int(score / length_of_test * 100))
+    return accuracy_score

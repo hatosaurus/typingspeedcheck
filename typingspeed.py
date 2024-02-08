@@ -1,10 +1,9 @@
 import random
-import time
 
 
 def get_words():
-    with open('words.txt', 'r') as f:
-        all_words = [line.strip() for line in f]
+    with open('words.txt', 'r') as file:
+        all_words = [line.strip() for line in file]
     return all_words
 
 
@@ -23,16 +22,11 @@ def user_typing(words):
     return typing
 
 
-# End timer
-def get_time():
-    now = time.time()
-    return now
-
-
 def calculate_seconds(start, end, length_of_test):
     seconds = end - start
     print(f"Total time taken: {seconds} seconds.")
     seconds_per_word = length_of_test / seconds
+    print(f"Seconds per word: {seconds_per_word}")
     word_per_minute = int(60/seconds_per_word)
     return word_per_minute
 
@@ -51,7 +45,7 @@ def check_accuracy(userlist, wordlist, length_of_test):
         index = check_list.index(word)
         try:
             if userlist[index] == word:
-                print(f"{word} is correct.")
+                # print(f"{word} is correct.")
                 score += 1
             else:
                 print(f"{word} is not correct, user typed {userlist[index]}")
